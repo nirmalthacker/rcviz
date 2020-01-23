@@ -6,7 +6,7 @@ rcviz
 * Provides a decorator to instrument target functions (as opposed to trace or debugger based approaches)  
 * Uses pygraphviz to render the graph. 
 
-##usage
+## usage
 
 1. Use the @viz decorator to instrument the recursive function.
 > @viz <br>
@@ -17,7 +17,12 @@ rcviz
 
 The output file type is derived from the file name. Supported types include .dot (graphviz dot file), .png (png image), .svg (vector graphic)
 
-##example
+
+## example
+
+Output for recursive Fibonacci function and for a Recursive Descent parse can be found on this [blog post](https://zvzzt.wordpress.com/2014/05/03/python-recursion-visualization-with-rcviz)
+
+
 
 ```python
 from rcviz import callgraph, viz
@@ -37,7 +42,7 @@ callgraph.render("sort.png")
 ```
 
 ## output 
-![quicksort rcviz output](http://s30.postimg.org/7chmr6q35/sort.png)
+![quicksort rcviz output](example/sort.png)
 
 Note:
 1. The edges are numbered by the order in which they were traversed by the execution.
@@ -54,14 +59,24 @@ Show intermediate values of local variables in the output render by invoking dec
 
 ## dependencies
 
-This requires graphviz and pygraphviz to work.
-
-On ubuntu: 
+This requires the native graphviz and libgraphviz-dev packages pre-installed. e.g. On ubuntu do: 
 
 > $sudo apt-get install graphviz libgraphviz-dev<br>
-> $sudo python setup.py install <br>
 
-Tested on python 2.7.3
+then
+
+For python2:
+
+> python -m virtualenv .venv
+> source .venv/bin/activate
+> python setup.py install <br>
+
+For python3.x:
+> python -m venv .venv
+> source .venv/bin/activate
+> python setup.py install <br>
+
+Tested on python 2.7.3 and python 3.6 
 
 Setup script by [adampetrovic](https://github.com/adampetrovic).
 
